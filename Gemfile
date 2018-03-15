@@ -70,7 +70,6 @@ end
 group :production do
   gem 'unicorn'
   gem 'pg'
-  gem 'rails-12factor'
 end
 
 # Both Test and Development env gems
