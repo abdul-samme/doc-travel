@@ -5,7 +5,6 @@ ruby '2.4.0'
 
 # General list of gems
 gem 'rails', '5.0.2'
-gem 'pg'
 gem 'puma'
 gem 'sass-rails'
 gem "select2-rails"
@@ -30,6 +29,8 @@ gem 'friendly_id'
 
 # Only Development env gems
 group :development do
+  gem 'pg'
+
   gem 'better_errors'
   gem 'foreman'
   gem 'rails_layout'
@@ -68,6 +69,8 @@ end
 # Only Production env gems
 group :production do
   gem 'unicorn'
+  gem 'pg'
+  gem 'rails-12factor'
 end
 
 # Both Test and Development env gems
