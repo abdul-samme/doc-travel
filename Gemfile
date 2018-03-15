@@ -29,7 +29,7 @@ gem 'friendly_id'
 
 # Only Development env gems
 group :development do
-  gem 'pg'
+  #gem 'pg'
 
   gem 'better_errors'
   gem 'foreman'
