@@ -1,0 +1,92 @@
+<div class="form-group">
+  <%= f.label :Name %>
+  <%= f.text_field :name, class: "form-control", placeholder: "Enter Name", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+
+<div class="form-group">
+  <%= f.label :Phone %>
+  <%= f.text_field :phone, class: "form-control", placeholder: "Enter Phone", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+
+
+<div class="form-group">
+  <%= f.label :Visa_Type %>
+  <%= f.select :visaType, options_for_select(['Visit Visa','Umra Visa(Mofa only)','Umra Visa(Mofa + Accomodation)','Umra Visa(Mofa + Accomodation + Ticket)'],selected: @visit.visaType.present? ? @visit.visaType : ''), {:include_blank => true}, {:multiple => false, :class => "js-example-basic-single col-xs-12", :label => false,:style => "margin-left:25px;", :data => {:placeholder => ' select visa type details'}}%>  <span class="help-block"><i>* This field is required</i><span>
+</div>
+
+<div class="form-group">
+  <%= f.label :country %>
+  <%= f.country_select :countryCode  ,{:include_blank => true}, {:multiple => false, :class => "js-example-basic-single col-xs-12", :label => false,:style => "margin-left:25px;", :data => {:placeholder => 'choose country'}} %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+
+<div class="form-group">
+  <%= f.label :Visa_Documents %>
+  <%= f.select :visaWith, options_for_select(['Visa With Document','Visa Without Document','Not Described'],selected: @visit.visaWith.present? ? @visit.visaWith : ''), {:include_blank => true}, {:multiple => false, :class => "js-example-basic-single col-xs-12", :label => false,:style => "margin-left:25px;", :data => {:placeholder => ' select visa with document or without document'}}%>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+
+<div class="form-group">
+  <%= f.label :Days %>
+  <%= f.select :days, options_for_select(['15','21','28','Not Described'],selected: @visit.days.present? ? @visit.days : ''), {:include_blank => true}, {:multiple => false, :class => "js-example-basic-single col-xs-12", :label => false,:style => "margin-left:25px;", :data => {:placeholder => ' select number of days'}}%>  <span class="help-block"><i>* This field is required</i><span>
+</div>
+
+
+<div class="form-group">
+  <%= f.label :Description %>
+  <%= f.text_field :description, class: "form-control", placeholder: "Enter 
+  description", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+
+<div class="form-group">
+  <%= f.label :Sale_Price %>
+  <%= f.number_field :salePrice, class: "form-control", placeholder: "Enter Amount", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+<div class="form-group">
+  <%= f.label :Paid_Amount %>
+  <%= f.number_field :paidAmount, class: "form-control", placeholder: "Enter Amount", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+<!--
+<div class="form-group">
+  <%= f.label :debit %>
+  <%= f.number_field :debitAmount, class: "form-control", placeholder: "Enter Debit", required: true %>
+  <span class="help-block"><i>* This field is required (leave blank if you are editing and don't want to change the password)</i><span>
+</div>
+-->
+<div class="form-group">
+  <%= f.label :Actual_Cost %>
+  <%= f.number_field :actualCost, class: "form-control", placeholder: "Enter Actual Cost", required: true %>
+  <span class="help-block"><i>* This field is required (leave blank if you are editing and don't want to change the password)</i><span>
+</div>
+<!--
+<div class="form-group">
+  <%= f.label :Client_Payment_Status %>
+  <%= f.select :status, options_for_select(['cleared','Not Cleared'],selected: @visit.status.present? ? @visit.status : ''), {:include_blank => true}, {:multiple => false, :class => "js-example-basic-single col-xs-12", :label => false,:style => "margin-left:25px;", :data => {:placeholder => ' select payment status'}}%>  <span class="help-block"><i>* This field is required</i><span>
+</div>
+-->
+<%= f.hidden_field :profit, :value => '' %>
+<%= f.hidden_field :debitAmount, :value => '' %>
+<%= f.hidden_field :status, :value => '' %>
+
+
+
+
+<!--
+<div class="form-group">
+  <%= f.label :credit %>
+  <%= f.number_field :creditAmount, class: "form-control", placeholder: "Enter Credit", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+-->
+
+
+
+
+
+
+
