@@ -8,6 +8,8 @@ gem 'rails', '5.0.2'
 gem 'puma'
 gem 'frontend-generators'
 #gem 'pg', '~> 0.18'
+gem "font-awesome-rails"
+
 gem 'sass-rails'
 gem "select2-rails"
 gem 'uglifier'
