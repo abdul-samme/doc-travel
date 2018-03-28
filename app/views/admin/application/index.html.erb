@@ -4,9 +4,9 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3><%=Visit.sum(:paidAmount)%> </h3>
+              <h3><%=Visit.sum(:paidAmount) + Ticket.sum(:paidAmount)%> </h3>
 
-              <p>Total Paid Amount</p>
+              <p>Total Paid Amount (Visa + Ticket)</p>
             </div>
             <div class="icon">
               <i class="fa fa-shopping-cart"></i>
@@ -19,9 +19,9 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3><%= Visit.sum(:actualCost)%> </h3>
+              <h3><%= Visit.sum(:actualCost) + Ticket.sum(:actual_price)%> </h3>
 
-              <p>Total Cost</p>
+              <p>Total Cost (Visa + Ticket)</p>
             </div>
             <div class="icon">
               <i class="fa fa-bar-chart"></i>
@@ -33,8 +33,8 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3><%=Visit.sum(:debitAmount)%> </h3>
-              <p>Total Debit</p>
+              <h3><%=Visit.sum(:debitAmount) + Ticket.sum(:debit)%> </h3>
+              <p>Total Debit (Visa + Ticket )</p>
             </div>
             <div class="icon">
               <i class="fa fa-dollar"></i>
@@ -48,9 +48,9 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3><%= Visit.sum(:profit)%></h3>
+              <h3><%= Visit.sum(:profit) + Ticket.sum(:margin)%></h3>
 
-              <p>Total Margin</p>
+              <p>Total Margin (Visa + Ticket )</p>
             </div>
             <div class="icon">
               <i class="fa fa-euro"></i>
@@ -76,91 +76,208 @@
         </div>
       </div>
       -->
-      <div class="row">
-        <div class="col-md-6">
-          <!-- AREA CHART -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Area Chart</h3>
+      </div>
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+
+            <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title"><strong>Report</strong></h3>
+
+            
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-6">
+                  
+                 <div class="table-responsive">
+                <table class="table no-margin table-bordered">
+                  <thead>
+                  <tr>
+                    <th>Visa</th>
+                    <th></th>
+     
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Total Visa</td>
+                    <td><%=Visit.sum(:quantity)%></td>
+                 
+                  </tr>
+                  <tr>
+                    <td>Visit visa</td>
+                    <td><%=Visit.where(visaType: 'Visit Visa').count%></td>
+                
+                  </tr>
+                  <tr>
+                    <td>Mofa</td>
+                    <td><%=Visit.where(visaType: 'Umra Visa(Mofa only)').count%></td>
+
+                  </tr>
+                  <tr>
+                    <td> Mofa+ Accomodation</td>
+                    <td><%=Visit.where(visaType: 'Umra Visa(Mofa + Accomodation)').count%></td>
+
+                  </tr>
+                  <tr>
+                    <td>Mofa + Accomodation + Ticket</td>
+                    <td><%=Visit.where(visaType: 'Umra Visa(Mofa + Accomodation + Ticket)').count%></td>
+                  </tr>
+                  <tr>
+                    <td>Total Sale Amount</td>
+                    <td><%=Visit.sum(:salePrice)%></td>
+
+                  </tr>
+                  <tr>
+                    <td>Total Paid Amount</td>
+                    <td><%=Visit.sum(:paidAmount)%></td>
+
+                  </tr>
+                  <tr>
+                    <td>Total Actual Cost</td>
+                    <td><%=Visit.sum(:actualCost)%></td>
+
+                  </tr>
+                  <tr>
+                    <td>Total Margin</td>
+                    <td><%=Visit.sum(:profit)%></td>
+
+                  </tr>
+                  <tr>
+                    <td>Total Deibt</td>
+                    <td><%=Visit.sum(:debitAmount)%></td>
+
+                  </tr>
+                  
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+           
+                  <!-- /.chart-responsive -->
+               
+                <!-- /.col -->
+                <div class="col-md-6">
+                <div class="table-responsive">
+                <table class="table no-margin table-bordered">
+                  <thead>
+                  <tr>
+                    <th>Ticket</th>
+                    <th></th>
+     
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Total Ticket</td>
+                    <td><%=Ticket.sum(:quantity)%></td>
+                 
+                  </tr>
+                  <tr>
+                    <td>Child</td>
+                    <td><%=Ticket.sum(:child)%></td>
+                
+                  </tr>
+                  <tr>
+                    <td>Adult</td>
+                    <td><%=Ticket.sum(:adult)%></td>
+
+                  </tr>
+                  <tr>
+                    <td>Infant</td>
+                    <td><%=Ticket.sum(:infant)%></td>
+
+                  </tr>
+                  <tr>
+                    <td>Total Sale Amount</td>
+                    <td><%=Ticket.sum(:sale_price)%></td>
+
+                  </tr>
+                  <tr>
+                    <td>Total Paid Amount</td>
+                    <td><%=Ticket.sum(:paidAmount)%></td>
+
+                  </tr>
+                  <tr>
+                    <td>Total Actual Cost</td>
+                    <td><%=Ticket.sum(:actual_price)%></td>
+
+                  </tr>
+                  <tr>
+                    <td>Total Margin</td>
+                    <td><%=Ticket.sum(:margin)%></td>
+
+                  </tr>
+                  <tr>
+                    <td>Total Deibt</td>
+                    <td><%=Ticket.sum(:debit)%></td>
+
+                  </tr>
+                  
+                  </tbody>
+                </table>
+              </div>
+               
+                  <!-- /.progress-group -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- ./box-body -->
+
+          
+
+
+
+
+
+
+<!--
+
+            <div class="box-footer">
+              <div class="row">
+                <div class="col-sm-3 col-xs-6">
+                  <div class="description-block border-right">
+                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
+                    <h5 class="description-header">$35,210.43</h5>
+                    <span class="description-text">TOTAL REVENUE</span>
+                  </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                  <div class="description-block border-right">
+                    <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
+                    <h5 class="description-header">$10,390.90</h5>
+                    <span class="description-text">TOTAL COST</span>
+                  </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                  <div class="description-block border-right">
+                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
+                    <h5 class="description-header">$24,813.53</h5>
+                    <span class="description-text">TOTAL PROFIT</span>
+                  </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                  <div class="description-block">
+                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
+                    <h5 class="description-header">1200</h5>
+                    <span class="description-text">GOAL COMPLETIONS</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="box-body chart-responsive">
-              <div class="chart" id="revenue-chart" style="height: 300px;"></div>
-            </div>
-            <!-- /.box-body -->
           </div>
-          <!-- /.box -->
-
-          <!-- DONUT CHART -->
-          <div class="box box-danger">
-            <div class="box-header with-border">
-              <h3 class="box-title">Donut Chart</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body chart-responsive">
-              <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
         </div>
-        <!-- /.col (LEFT) -->
-        <div class="col-md-6">
-          <!-- LINE CHART -->
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Line Chart</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body chart-responsive">
-              <div class="chart" id="line-chart" style="height: 300px;"></div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-          <!-- BAR CHART -->
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Bar Chart</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body chart-responsive">
-              <div class="chart" id="bar-chart" style="height: 300px;"></div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-        </div>
-        <!-- /.col (RIGHT) -->
       </div>
 
 
 
-<!--  Table starts here -->
 
-
+-->
 
 

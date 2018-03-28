@@ -113,7 +113,7 @@ module Admin
 
     # Never trust parameters from the scary internet, only allow the white list through.
     private def visit_params
-      params.require(:visit).permit(:visaWith, :countryCode, :paidAmount, :creditAmount, :debitAmount, :actualCost, :salePrice, :profit, :status,:name, :description, :visaType, :days, :phone)
+      params.require(:visit).permit(:visaWith, :countryCode, :paidAmount, :creditAmount, :debitAmount, :actualCost, :salePrice, :profit, :status,:name, :description, :visaType, :days, :phone, :quantity)
     end
   end
 end

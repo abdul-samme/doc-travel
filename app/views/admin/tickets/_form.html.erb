@@ -1,0 +1,99 @@
+<div class="form-group">
+  <%= f.label :Name %>
+  <%= f.text_field :name, class: "form-control", placeholder: "Enter Name", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+<div class="form-group">
+  <%= f.label :Phone %>
+  <%= f.text_field :phone, class: "form-control", placeholder: "Enter from", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+
+<div class="form-group">
+  <%= f.label :Airline , :class => "col-xs-12", style:"padding-left:0px;"%>
+  <%= f.select :airline, options_for_select(['PIA','PIA1','PIA2','PIA3'],selected: @ticket.airline.present? ? @ticket.airline : ''), {:include_blank => true}, {:multiple => false, :class => "js-example-basic-single col-xs-12", :label => false,:style => "margin-left:25px;", :data => {:placeholder => ' select visa type details'}}%>  <span class="help-block"><i>* This field is required</i><span>
+</div>
+
+<div class="form-group">
+  <%= f.label :Sector %>
+  <%= f.text_field :sector, class: "form-control", placeholder: "Enter sector", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+<div class="form-group">
+  <%= f.label :Ticket_no %>
+  <%= f.text_field :ticket_no, class: "form-control", placeholder: "Enter ticket no", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+<div class="form-group">
+  <%= f.label :Airline_Pnr %>
+  <%= f.text_field :airline_pnr, class: "form-control", placeholder: "Enter Airline Pnr", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+<div class="form-group">
+  <%= f.label :Gds_Pnr %>
+  <%= f.text_field :gds_pnr, class: "form-control", placeholder: "Enter Gds_Pnr", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+
+<div class="form-group">
+  <%= f.label :Quantity %>
+  <%= f.number_field :quantity, class: "form-control", placeholder: "Enter Quantity", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+<div class="form-group">
+  <%= f.label :Adult  %>
+  <%= f.number_field :adult, class: "form-control", placeholder: "Enter Quantity", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+<div class="form-group">
+  <%= f.label :Child %>
+  <%= f.number_field :child, class: "form-control", placeholder: "Enter Quantity", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+<div class="form-group">
+  <%= f.label :Infant %>
+  <%= f.number_field :infant, class: "form-control", placeholder: "Enter Quantity", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+
+
+
+<div class="form-group">
+  <%= f.label :Description %>
+  <%= f.text_field :description, class: "form-control", placeholder: "Enter 
+  description", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+
+<div class="form-group">
+  <%= f.label :Sale_Price %>
+  <%= f.number_field :sale_price, class: "form-control", placeholder: "Enter Amount", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+<div class="form-group">
+  <%= f.label :Paid_Amount %>
+  <%= f.number_field :paidAmount, class: "form-control", placeholder: "Enter Amount", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+
+<div class="form-group">
+  <%= f.label :Actual_Cost %>
+  <%= f.number_field :actual_price, class: "form-control", placeholder: "Enter Actual Cost", required: true %>
+  <span class="help-block"><i>* This field is required (leave blank if you are editing and don't want to change the password)</i><span>
+</div>
+
+<%= f.hidden_field :margin, :value => '' %>
+<%= f.hidden_field :debitAmount, :value => '' %>
+<%= f.hidden_field :status, :value => '' %>
+
+
+
+
+
+
+
+
+
+
+
+

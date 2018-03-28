@@ -12,24 +12,30 @@
 
 
 <div class="form-group">
-  <%= f.label :Visa_Type %>
+  <%= f.label :Visa_Type , :class => "col-xs-12", style:"padding-left:0px;"%>
   <%= f.select :visaType, options_for_select(['Visit Visa','Umra Visa(Mofa only)','Umra Visa(Mofa + Accomodation)','Umra Visa(Mofa + Accomodation + Ticket)'],selected: @visit.visaType.present? ? @visit.visaType : ''), {:include_blank => true}, {:multiple => false, :class => "js-example-basic-single col-xs-12", :label => false,:style => "margin-left:25px;", :data => {:placeholder => ' select visa type details'}}%>  <span class="help-block"><i>* This field is required</i><span>
 </div>
 
 <div class="form-group">
-  <%= f.label :country %>
+  <%= f.label :Quantity %>
+  <%= f.number_field :quantity, class: "form-control", placeholder: "Enter Quantity", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+
+<div class="form-group">
+  <%= f.label :country , :class => "col-xs-12", style:"padding-left:0px;" %>
   <%= f.country_select :countryCode  ,{:include_blank => true}, {:multiple => false, :class => "js-example-basic-single col-xs-12", :label => false,:style => "margin-left:25px;", :data => {:placeholder => 'choose country'}} %>
   <span class="help-block"><i>* This field is required</i><span>
 </div>
 
 <div class="form-group">
-  <%= f.label :Visa_Documents %>
+  <%= f.label :Visa_Documents , :class => "col-xs-12", style:"padding-left:0px;" %>
   <%= f.select :visaWith, options_for_select(['Visa With Document','Visa Without Document','Not Described'],selected: @visit.visaWith.present? ? @visit.visaWith : ''), {:include_blank => true}, {:multiple => false, :class => "js-example-basic-single col-xs-12", :label => false,:style => "margin-left:25px;", :data => {:placeholder => ' select visa with document or without document'}}%>
   <span class="help-block"><i>* This field is required</i><span>
 </div>
 
 <div class="form-group">
-  <%= f.label :Days %>
+  <%= f.label :Days , :class => "col-xs-12", style:"padding-left:0px;" %>
   <%= f.select :days, options_for_select(['15','21','28','Not Described'],selected: @visit.days.present? ? @visit.days : ''), {:include_blank => true}, {:multiple => false, :class => "js-example-basic-single col-xs-12", :label => false,:style => "margin-left:25px;", :data => {:placeholder => ' select number of days'}}%>  <span class="help-block"><i>* This field is required</i><span>
 </div>
 
@@ -65,7 +71,7 @@
 </div>
 <!--
 <div class="form-group">
-  <%= f.label :Client_Payment_Status %>
+  <%= f.label :Client_Payment_Status , :class => "col-xs-12", style:"padding-left:0px;" %>
   <%= f.select :status, options_for_select(['cleared','Not Cleared'],selected: @visit.status.present? ? @visit.status : ''), {:include_blank => true}, {:multiple => false, :class => "js-example-basic-single col-xs-12", :label => false,:style => "margin-left:25px;", :data => {:placeholder => ' select payment status'}}%>  <span class="help-block"><i>* This field is required</i><span>
 </div>
 -->

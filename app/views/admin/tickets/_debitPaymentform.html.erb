@@ -1,0 +1,9 @@
+<div class="form-group">
+  <%= f.label :Enter_Amount %>
+  <%= f.number_field :creditAmount, class: "form-control", placeholder: "Enter Amount", required: true %>
+  <span class="help-block"><i>* This field is required</i><span>
+</div>
+<%= f.hidden_field :paidAmount, :value => @ticket.paidAmount %>
+<%= f.hidden_field :debit, :value => @ticket.debit %>
+<%= f.hidden_field :status, :value => @ticket.status %>
+<%= f.hidden_field :id, :value => @ticket.id %>

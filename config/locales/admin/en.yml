@@ -20,3 +20,10 @@ en:
         success:  successfully updated.
       destroy:
         success:  successfully destroyed
+    tickets:
+      create:
+        success:  successfully created.
+      update:
+        success:  successfully updated.
+      destroy:
+        success:  successfully destroyed

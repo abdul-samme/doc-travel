@@ -39,6 +39,20 @@
           <li> <%= link_to '<i class="fa fa-bank"></i> All Debits'.html_safe, debit_admin_visits_path %> </li>
         </ul>
       </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-plane"></i>
+          <span>Ticket</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li> <%= link_to '<i class="fa fa-list"></i> List Ticket'.html_safe, admin_tickets_path %> </li>
+          <li> <%= link_to '<i class="fa fa-user-plus"></i> Create Ticket'.html_safe, new_admin_ticket_path %> </li>
+          <li> <%= link_to '<i class="fa fa-bank"></i> All Ticket Debits'.html_safe, debit_admin_tickets_path %> </li>
+        </ul>
+      </li>
 
     </ul>
 

@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312154306) do
+ActiveRecord::Schema.define(version: 20180325114804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "tickets", force: :cascade do |t|
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "name"
+    t.string   "airline"
+    t.string   "sector"
+    t.integer  "sale_price"
+    t.integer  "actual_price"
+    t.string   "ticket_no"
+    t.string   "airline_pnr"
+    t.string   "gds_pnr"
+    t.string   "from"
+    t.string   "to"
+    t.integer  "adult"
+    t.integer  "child"
+    t.integer  "infant"
+    t.integer  "quantity"
+    t.integer  "creditAmount"
+    t.integer  "debit"
+    t.integer  "margin"
+    t.string   "status"
+    t.text     "description"
+    t.integer  "paidAmount"
+    t.string   "phone"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -56,6 +82,7 @@ ActiveRecord::Schema.define(version: 20180312154306) do
     t.string   "visaType"
     t.string   "days"
     t.string   "phone"
+    t.integer  "quantity"
   end
 
 end

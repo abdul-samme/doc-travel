@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
 # Ruby version
-ruby '2.4.0'
+ruby '2.3.1'
 
 # General list of gems
 gem 'rails', '5.0.2'
 gem 'puma'
+gem 'frontend-generators'
+#gem 'pg', '~> 0.18'
 gem 'sass-rails'
 gem "select2-rails"
 gem 'uglifier'
@@ -29,7 +31,7 @@ gem 'friendly_id'
 
 # Only Development env gems
 group :development do
-  #gem 'pg'
+  gem 'pg'
 
   gem 'better_errors'
   gem 'foreman'
