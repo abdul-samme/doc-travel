@@ -374,7 +374,7 @@ DEPENDENCIES
   layer-handler
   listen
   morrisjs-rails
-  pg
+  pg (~> 0.11)
   pry-byebug
   pry-rails
   pry-remote
