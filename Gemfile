@@ -7,7 +7,7 @@ ruby '2.3.1'
 gem 'rails', '5.0.2'
 gem 'puma'
 gem 'frontend-generators'
-#gem 'pg', '~> 0.18'
+#gem 'pg', '~> 0.11'
 gem "font-awesome-rails"
 
 gem 'sass-rails'
@@ -33,7 +33,7 @@ gem 'friendly_id'
 
 # Only Development env gems
 group :development do
-  gem 'pg'
+  gem 'pg', '~> 0.11'
   gem 'capistrano', ' 3.7.1'
 gem 'capistrano-rails', '~> 1.2'
 gem 'capistrano-passenger', '~> 0.2.0'
@@ -76,7 +76,8 @@ end
 # Only Production env gems
 group :production do
   gem 'unicorn'
-  gem 'pg'
+  gem 'pg', '~> 0.11'
+
 end
 
 # Both Test and Development env gems
