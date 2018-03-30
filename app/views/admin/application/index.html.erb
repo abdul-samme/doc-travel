@@ -109,22 +109,22 @@
                   </tr>
                   <tr>
                     <td>Visit visa</td>
-                    <td><%=Visit.where(visaType: 'Visit Visa').count%></td>
+                    <td><%=Visit.where(visaType: 'Visit Visa').sum(:quantity)%></td>
                 
                   </tr>
                   <tr>
                     <td>Mofa</td>
-                    <td><%=Visit.where(visaType: 'Umra Visa(Mofa only)').count%></td>
+                    <td><%=Visit.where(visaType: 'Umra Visa(Mofa only)').sum(:quantity)%></td>
 
                   </tr>
                   <tr>
                     <td> Mofa+ Accomodation</td>
-                    <td><%=Visit.where(visaType: 'Umra Visa(Mofa + Accomodation)').count%></td>
+                    <td><%=Visit.where(visaType: 'Umra Visa(Mofa + Accomodation)').sum(:quantity)%></td>
 
                   </tr>
                   <tr>
                     <td>Mofa + Accomodation + Ticket</td>
-                    <td><%=Visit.where(visaType: 'Umra Visa(Mofa + Accomodation + Ticket)').count%></td>
+                    <td><%=Visit.where(visaType: 'Umra Visa(Mofa + Accomodation + Ticket)').sum(:quantity)%></td>
                   </tr>
                   <tr>
                     <td>Total Sale Amount</td>
