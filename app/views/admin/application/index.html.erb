@@ -78,7 +78,7 @@
       -->
       </div>
 
-
+<!--
             <div class="row">
         <div class="col-md-12">
           <div class="box">
@@ -87,7 +87,6 @@
 
             
             </div>
-            <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
                 <div class="col-md-6">
@@ -155,12 +154,9 @@
                   </tbody>
                 </table>
               </div>
-              <!-- /.table-responsive -->
             </div>
            
-                  <!-- /.chart-responsive -->
-               
-                <!-- /.col -->
+                  
                 <div class="col-md-6">
                 <div class="table-responsive">
                 <table class="table no-margin table-bordered">
@@ -222,16 +218,96 @@
                 </table>
               </div>
                
-                  <!-- /.progress-group -->
                 </div>
-                <!-- /.col -->
               </div>
-              <!-- /.row -->
             </div>
-            <!-- ./box-body -->
+-->
+      <div class="row">
+        <div class="col-md-4">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-yellow">
+              
+              <!-- /.widget-user-image -->
+                            <h3>Visa</h3>
 
-          
+            </div>
+            <div class="box-footer no-padding">
+              <ul class="nav nav-stacked">
+                <li><a href="#">Total Visa <span class="pull-right badge bg-blue"><%=Visit.sum(:quantity)%></span></a></li>
+                <li><a href="#">Visit visa <span class="pull-right badge bg-aqua"><%=Visit.where(visaType: 'Visit Visa').sum(:quantity)%></span></a></li>
+                <li><a href="#">Mofa <span class="pull-right badge bg-green"><%=Visit.where(visaType: 'Umra Visa(Mofa only)').sum(:quantity)%></span></a></li>
+                <li><a href="#">Mofa+ Accomodation <span class="pull-right badge bg-red"><%=Visit.where(visaType: 'Umra Visa(Mofa + Accomodation)').sum(:quantity)%></span></a></li>
+                <li><a href="#">Mofa + Accomodation + Ticket <span class="pull-right badge bg-blue"><%=Visit.where(visaType: 'Umra Visa(Mofa + Accomodation + Ticket)').sum(:quantity)%></span></a></li>
+                <li><a href="#">Total Sale Amount <span class="pull-right badge bg-aqua"><%=Visit.sum(:salePrice)%></span></a></li>
+                <li><a href="#">Total Paid Amount <span class="pull-right badge bg-green"><%=Visit.sum(:paidAmount)%></span></a></li>
+                <li><a href="#"><%=Visit.sum(:actualCost)%> <span class="pull-right badge bg-red"><%=Visit.sum(:actualCost)%></span></a></li>
+                <li><a href="#">Total Margin <span class="pull-right badge bg-red"><%=Visit.sum(:profit)%></span></a></li>
+                <li><a href="#">Total Deibt <span class="pull-right badge bg-red"><%=Visit.sum(:debitAmount)%></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+        <div class="col-md-4">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-yellow">
+             
+              <!-- /.widget-user-image -->
+                            <h3>Ticket</h3>
 
+            </div>
+            <div class="box-footer no-padding">
+              <ul class="nav nav-stacked">
+                <li><a href="#">Total Ticket <span class="pull-right badge bg-blue"><%=Ticket.sum(:quantity)%></span></a></li>
+                <li><a href="#">Child <span class="pull-right badge bg-aqua"><%=Ticket.sum(:child)%></span></a></li>
+                <li><a href="#">Adult <span class="pull-right badge bg-green"><%=Ticket.sum(:adult)%></span></a></li>
+                <li><a href="#">Infant <span class="pull-right badge bg-red"><%=Ticket.sum(:infant)%></span></a></li>
+                <li><a href="#">Total Sale Amount <span class="pull-right badge bg-blue"><%=Ticket.sum(:sale_price)%></span></a></li>
+                <li><a href="#">Total Paid Amount <span class="pull-right badge bg-aqua"><%=Ticket.sum(:paidAmount)%></span></a></li>
+                <li><a href="#">Total Actual Cost <span class="pull-right badge bg-green"><%=Ticket.sum(:actual_price)%></span></a></li>
+                <li><a href="#">Total Profit <span class="pull-right badge bg-red"><%=Ticket.sum(:margin)%></span></a></li>
+                <li><a href="#">Total Deibt <span class="pull-right badge bg-red"><%=Ticket.sum(:debit)%></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+        <div class="col-md-4">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-yellow">
+              
+              <!-- /.widget-user-image -->
+              <h3>Dealing With Companies</h3>
+            
+            </div>
+            <div class="box-footer no-padding">
+              <ul class="nav nav-stacked">
+                <li><a href="#">Total Sold Visa <span class="pull-right badge bg-green"><%=Company.where(["bye_or_sell = ? and visa_or_ticket = ?",  "Sell", "Visa"]).sum(:quantity)%></span></a></li>
+                <li><a href="#">Total Sold Ticket <span class="pull-right badge bg-green"><%=Company.where(["bye_or_sell = ? and visa_or_ticket = ?",  "Sell", "Ticket"]).sum(:quantity)%></span></a></li>
+                <li><a href="#">Companies Paid Amount <span class="pull-right badge bg-blue"><%=Company.where(bye_or_sell: 'Sell').sum(:paidAmount)%></span></a></li>
+                <li><a href="#">Total Cost <span class="pull-right badge bg-aqua"><%=Company.where(bye_or_sell: 'Sell').sum(:actualCost)%></span></a></li>
+                <li><a href="#">Total Margin <span class="pull-right badge bg-green"><%=Company.where(bye_or_sell: 'Sell').sum(:profit)%></span></a></li>
+                <li><a href="#">Companies Debit <span class="pull-right badge bg-red"><%=Company.where(bye_or_sell: 'Sell').sum(:debitAmount)%></span></a></li>
+                <li><a href="#">Total Bought Visa <span class="pull-right badge bg-green"><%=Company.where(["bye_or_sell = ? and visa_or_ticket = ?",  "Buy", "Visa"]).sum(:quantity)%></span></a></li>
+                <li><a href="#">Total Bought Ticket <span class="pull-right badge bg-green"><%=Company.where(["bye_or_sell = ? and visa_or_ticket = ?",  "Buy", "Ticket"]).sum(:quantity)%></span></a></li>
+                <li><a href="#">Your Purchase Amount<span class="pull-right badge bg-blue"><%=Company.where(bye_or_sell: 'Buy').sum(:paidAmount)%></span></a></li>
+                
+                <li><a href="#">Your Debit <span class="pull-right badge bg-aqua"><%=Company.where(bye_or_sell: 'Buy').sum(:debitAmount)%></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+        <!-- /.col -->
+        
+        <!-- /.col -->  
+       </div>
 
 
 

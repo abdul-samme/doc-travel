@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">List of All Debits</h3> 
+        </div>
+        <div class="box-body">
+          <div id="user_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="user_index " class="table table-bordered table-striped dataTable" role="grid">
+                  <thead>
+                    <tr>
+                      <th> Ref#</th>
+                      <th> Name </th>
+                      <th> Buy/Sell </th>
+                      <th> Paid Amount</th>
+                      <th> Debit</th>
+                      <th> Status </th>
+                      <th> Date </th>
+                      <th class="col-xs-1"> 
+                      Action</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @companies.each do |company| %>
+                      <tr>
+                        <td> <%= company.id %> </td>
+                        <td> <%= company.name %> </td>
+                        <td> <%= company.bye_or_sell %> </td>
+
+                        <td> <%= company.paidAmount %> </td>                     
+                        <td> <%= company.debitAmount %> </td>
+                        <td> <%= company.status %> </td>
+                        <td> <%= company.updated_at.strftime("%d-%m-%Y") %> </td>
+
+                        <td>
+                          <div class="btn-row">
+                            <%= link_to raw('<i class="fa fa-eye"></i>'), payment_edit_admin_company_url(company), class: 'btn btn-sm btn-primary' %>
+                          </div>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+
+                 
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">List of Companies</h3> 
+        </div>
+        <div class="box-body">
+          <div id="user_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="user_index " class="table table-bordered table-striped dataTable" role="grid">
+                  <thead>
+                    <tr>
+                      <th> Ref#</th>
+                      <th> Name </th>
+                      <th> Visa/Ticket </th>
+                      <th> Quantity </th>
+                      <th> Buy/Sell</th>
+                      <th> Sale Price</th>
+                      <th> Paid Amount</th>
+                      <th> Debit</th>
+                      <th> Actual Cost</th>
+                      <th> Margin </th>
+                      
+                      
+                     
+                     
+                      <th class="col-xs-2">Actions</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @companies.each do |company| %>
+                      <tr>
+                        <td> <%= company.id %> </td>
+                        <td> <%= company.name %> </td>
+                        <td> <%= company.visa_or_ticket %> </td>
+                        <td> <%= company.quantity %> </td>
+                        <td> <%= company.bye_or_sell %> </td>
+                        <td> <%= company.salePrice %> </td>
+                        <td> <%= company.paidAmount %> </td>                     
+                        <td> <%= company.debitAmount %> </td>
+                        <td> <%= company.actualCost %> </td>
+                        <td> <%= company.profit %> </td>
+                        
+                <!--        <td> <%= company.bye_or_sell.present? ? status_value(company.bye_or_sell) : company.bye_or_sell %> </td> -->                                             
+
+                        <td>
+                          <div class="btn-row">
+                            <%= link_to raw('<i class="fa fa-eye"></i>'), admin_company_url(company), class: 'btn btn-sm btn-primary' %>
+                            <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_admin_company_url(company), class: 'btn btn-sm btn-warning' %>
+                            
+                          
+                          </div>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+
+                 
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+
+

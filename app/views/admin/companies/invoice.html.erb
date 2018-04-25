@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <title></title>
+
+    <%= stylesheet_link_tag 'application_back', media: 'all' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body onload="window.print();">
+  <div class="wrapper">
+
+       <section class="invoice">
+    <!-- title row -->
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="page-header">
+          <%= image_tag('logo.png', :size => '700x120')%>
+        </h2>
+      </div>
+        <!-- /.col -->
+      </div>
+      <div class="row">
+      <div class="col-xs-9">
+       <h4><b>Date: </b> <%= @visit.updated_at.strftime("%d-%m-%Y")%></h4>
+        
+      </div>
+      <div class="col-xs-3">
+       <h4><b>Ref# </b> <%=@visit.id%></h4>
+        
+      </div>
+      <hr>
+        <!-- /.col -->
+      </div>
+  <!--    <%= image_tag('logo.jpg', :size => '1100x120')%> -->
+      <!-- info row -->
+    <div class="row invoice-info">
+      <div class="col-sm-7 invoice-col">
+        From
+        <address>
+          <strong>The Fly Way Travel & Tours</strong><br>
+          10-k Commercial Markeet Khawaja Bangloz<br>
+          Abbasia Town, Rahim Yar Khan , Pakistan<br>
+          Fax & Tel: (068)5952036<br>
+          Email: theflywaytravels@gmail.com
+        </address>
+      </div>
+      <!-- /.col -->
+      <div class="col-sm-5 invoice-col">
+        To
+        <address>
+          <strong><%= @visit.name %></strong><br>
+          Phone: <%= @visit.phone %> <br>
+         
+        </address>
+      </div>
+      </div>
+   
+    <!-- /.row -->
+
+    <!-- Table row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Visa </th>
+                      <th>Country</th>
+                      <th>Visa Detail </th>
+                      <th>Days</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                      <tr>
+                        
+                        <td> <%= @visit.visaWith %> </td>
+                        <td> <%= @visit.countryCode.present? ? country_name(@visit.countryCode) : @visit.countryCode %> </td>
+                        <td> <%= @visit.visaType %> </td> 
+                        <td> <%= @visit.days %> </td>
+                        
+
+                        
+                      </tr>
+                  </tbody>
+
+                 
+                
+          </table>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      <div class="row">
+        <!-- accepted payments column -->
+        <div class="col-xs-6">
+          <p class="lead">Description:</p>
+          <p class="text-muted well well-sm no-shadow" style="margin-top: 5px;">
+            <%= @visit.description %>
+          </p>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-6">
+          <p class="lead">Payment Details</p>
+
+          <div class="table-responsive">
+            <table class="table">
+              <tr>
+                <th style="width:50%">Total Amount:</th>
+                <td><%= @visit.salePrice%></td>
+              </tr>
+              <tr>
+                <th>Paid Amount</th>
+                <td><%= @visit.paidAmount%></td>
+              </tr>
+              <tr>
+                <th>Remaining Amount</th>
+                <td><%= @visit.debitAmount%></td>
+              </tr>
+              <tr>
+                <th>Status:</th>
+                <td><%= @visit.status%></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <div class="row">
+      <div class="col-xs-6">
+       <h4><b>Owner Signature :</h4>
+        
+      </div>
+      <div class="col-xs-6">
+       <h4><b>Client Signature: </h4>
+        
+      </div>
+      <!-- /.row -->
+
+      <!-- this row will not appear when printing -->
+      
+    </section>
+  <!-- /.content -->
+  
+</div>
+      
+  </body>
+
+  <%= javascript_include_tag 'application_back' %>
+
+ 
+</html>
+
+    
+   

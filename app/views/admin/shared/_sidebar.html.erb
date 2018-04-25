@@ -53,6 +53,35 @@
           <li> <%= link_to '<i class="fa fa-bank"></i> All Ticket Debits'.html_safe, debit_admin_tickets_path %> </li>
         </ul>
       </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-building-o"></i>
+          <span>Companies</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li> <%= link_to '<i class="fa fa-archive"></i> Create Company'.html_safe, new_admin_deal_path %> </li>
+          <li> <%= link_to '<i class="fa fa-archive"></i> List Companies'.html_safe, admin_deals_path %> </li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-shopping-cart"></i>
+          <span>Dealing Companies</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li> <%= link_to '<i class="fa fa-list"></i> List Deals'.html_safe, admin_companies_path %> </li>
+          <li> <%= link_to '<i class="fa fa-user-plus"></i> Create 
+          Deal'.html_safe, new_admin_company_path %> </li> 
+          <li> <%= link_to '<i class="fa fa-bank"></i> All Debits'.html_safe, debit_admin_companies_path %> </li>
+        </ul>
+      </li>
+      
 
     </ul>
 
