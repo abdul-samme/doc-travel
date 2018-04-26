@@ -2,7 +2,9 @@
 lock "3.7.1"
 
 set :application, "flywaytravel"
-set :repo_url, "git@github.com:abdul-samme/flywaytravel.git"
+# set :repo_url, "git@github.com:abdul-samme/flywaytravel.git"
+set :repo_url, "git@github.com:abdul-samme/doc-travel.git"
+
 set :branch, 'master'
 set :deploy_to, '/home/deploy/flywaytravel'
 append :linked_files, "config/database.yml", "config/secrets.yml"
