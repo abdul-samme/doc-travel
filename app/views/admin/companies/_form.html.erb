@@ -3,7 +3,7 @@
   <%= f.label :Name , :class => "col-xs-12", style:"padding-left:0px;"%>
   <%= f.select :name, options_for_select(Deal.pluck(:name),selected: @company.name.present? ? @company.name : ''), {:include_blank => true}, {:multiple => false, :class => "js-example-basic-single col-xs-12", :label => false,:style => "margin-left:25px;", :data => {:placeholder => ' select visa type details'}}%>  <span class="help-block"><i>* This field is required</i><span>
 </div>
-
+<div class="form-group">
   <%= f.label :visa_or_ticket , :class => "col-xs-12", style:"padding-left:0px;"%>
   <%= f.select :visa_or_ticket, options_for_select(['Visa', 'Ticket'],selected: @company.visa_or_ticket.present? ? @company.visa_or_ticket : ''), {:include_blank => true}, {:multiple => false, :class => "js-example-basic-single col-xs-12", :label => false,:style => "margin-left:25px;", :data => {:placeholder => ' select visa or ticket'}}%>  <span class="help-block"><i>* This field is required</i><span>
 </div>
@@ -41,13 +41,7 @@
   description", required: true %>
   <span class="help-block"><i>* This field is required</i><span>
 </div>
-<!--
-<div class="form-group">
-  <%= f.label :amount %>
-  <%= f.number_field :amount, class: "form-control", placeholder: "Enter Amount", required: true %>
-  <span class="help-block"><i>* This field is required</i><span>
-</div>
--->
+
 
 
 
