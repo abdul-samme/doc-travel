@@ -235,7 +235,7 @@
             </div>
             <div class="box-footer no-padding">
               <ul class="nav nav-stacked">
-                <li><a href="#">Total Visa <span class="pull-right badge bg-blue"><%=Visit.sum(:quantity)%></span></a></li>
+                <li><a href="#">Visa = Adult+Child+Infant)<span class="pull-right badge bg-blue"><%=Visit.sum(:quantity)%> = <%=Visit.sum(:adult)%> + <%= Visit.sum(:child)%> + <%= Visit.sum(:infant)%></span></a></li>
                 <li><a href="#">Visit visa <span class="pull-right badge bg-blue"><%=Visit.where(visaType: 'Visit Visa').sum(:quantity)%></span></a></li>
                 <li><a href="#">Mofa <span class="pull-right badge bg-blue"><%=Visit.where(visaType: 'Umra Visa(Mofa only)').sum(:quantity)%></span></a></li>
                 <li><a href="#">Mofa+ Accomodation <span class="pull-right badge bg-blue"><%=Visit.where(visaType: 'Umra Visa(Mofa + Accomodation)').sum(:quantity)%></span></a></li>

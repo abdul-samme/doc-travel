@@ -32,13 +32,11 @@
   </body>
 
   <%= javascript_include_tag 'application_back' %>
+  
   <script>
       $(document).ready(function(){
         $('.dataTables-example').DataTable({
-          "scrollX": true,
-
           dom: '<"html5buttons"B>lTfgitp',
-
           buttons: [
             { extend: 'copy'},
             {extend: 'csv'},
@@ -56,15 +54,9 @@
               }
             }
           ]
-          
 
         });
-
       });
-
-         
-
-  
     </script>
 
   <% if content_for?(:added_scripts) %>
