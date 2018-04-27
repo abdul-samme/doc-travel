@@ -4,6 +4,7 @@
 //= require back/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min
 //= require back/plugins/datatables/jquery.dataTables.min
 //= require back/plugins/datatables/dataTables.bootstrap.min
+//= require dataTables/datatables.min
 //= require back/plugins/select2/select2.full
 //= require back/plugins/morris/morris
 //= require raphael
@@ -14,6 +15,8 @@
 $(document).ready(function() {
   var table = $('.dataTable').DataTable();
       $('.js-example-basic-single').select2();
+
+
 
 
   // Get sidebar state from localStorage and add the proper class to body
