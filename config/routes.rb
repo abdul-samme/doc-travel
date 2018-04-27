@@ -33,14 +33,11 @@ Rails.application.routes.draw do
       end
     end
     resources :users do
-      member do
-        get 'print'
-      end
+
     end
     resources :companies do
       member do
-        get 'print'
-        get 'preview'
+
         get 'payment_edit'
 
 
@@ -51,9 +48,7 @@ Rails.application.routes.draw do
       end
     end
     resources :deals do
-      member do
-        get 'print'
-      end
+
     end
 
     # Admin root

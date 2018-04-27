@@ -2,7 +2,7 @@
   module Admin
   class DealsController < Admin::ApplicationController
     respond_to :json, :html
-    before_action :set_deal, only: [:show, :edit, :update, :destroy, :print]
+    before_action :set_deal, only: [:show, :edit, :update, :destroy]
 
     # GET /deals
     # GET /deals.json
@@ -13,20 +13,10 @@
     # GET /deals/1
     # GET /deals/1.json
     def show
-        respond_to do |format|
-      format.html   
-      format.json
-      format.pdf { render template: 'admin/deals/report', pdf: 'report', layout: 'layouts/pdf'}
-    end
-  
-    end
-      def print
-        respond_to do |format|
-        format.html {render template: 'admin/deals/invoice' , layout: false}
       
     end
   
-    end
+   
 
     # GET /deals/new
     def new

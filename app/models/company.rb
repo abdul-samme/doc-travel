@@ -1,6 +1,6 @@
 class Company < ApplicationRecord
 	 
- belongs_to :deal 
+ 
   before_create :calculate_margin
   before_update :calculate_margin
   before_create :calculate_debit

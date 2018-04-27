@@ -2,7 +2,7 @@
   module Admin
   class CompaniesController < Admin::ApplicationController
     respond_to :json, :html
-    before_action :set_company, only: [:show, :edit, :update, :destroy, :print, :payment_edit]
+    before_action :set_company, only: [:show, :edit, :update, :destroy, :payment_edit]
     layout  'admin/layouts/admin'
 
     # GET /companies
@@ -44,18 +44,9 @@
     def show
         respond_to do |format|
       format.html   
-      format.json
-      format.pdf { render template: 'admin/companies/report', pdf: 'report', layout: 'layouts/pdf'}
+      end 
     end
   
-    end
-      def print
-        respond_to do |format|
-        format.html {render template: 'admin/companies/invoice' , layout: false}
-      
-    end
-  
-    end
 
     # GET /companies/new
     def new
