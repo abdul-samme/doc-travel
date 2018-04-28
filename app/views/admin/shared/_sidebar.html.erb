@@ -81,6 +81,20 @@
           <li> <%= link_to '<i class="fa fa-bank"></i> All Debits'.html_safe, debit_admin_companies_path %> </li>
         </ul>
       </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-money"></i>
+          <span>Expenses</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li> <%= link_to '<i class="fa fa-list"></i> List Expenses'.html_safe, admin_expenses_path %> </li>
+          <li> <%= link_to '<i class="fa fa-user-plus"></i> Create 
+          Expense'.html_safe, new_admin_expense_path %> </li> 
+        </ul>
+      </li>
       
 
     </ul>

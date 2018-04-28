@@ -1,0 +1,32 @@
+
+
+
+
+@media print{
+	body {
+		visibility: hidden;
+	}
+
+	#print{
+		visibility: visible;
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		border: none;
+		padding: 0px;
+		margin: 0px;
+	}
+
+	#print2{
+		display: block;
+	}
+
+	.ibox-content{
+		border-top: none;
+		padding: 30px;
+	}
+
+}

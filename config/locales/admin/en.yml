@@ -41,3 +41,10 @@ en:
         success:  successfully updated.
       destroy:
         success:  successfully destroyed
+    expenses:
+      create:
+        success:  successfully created.
+      update:
+        success:  successfully updated.
+      destroy:
+        success:  successfully destroyed

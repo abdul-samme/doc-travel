@@ -50,6 +50,9 @@ Rails.application.routes.draw do
     resources :deals do
 
     end
+    resources :expenses do
+
+    end
 
     # Admin root
     root to: 'application#index'
