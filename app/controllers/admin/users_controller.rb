@@ -21,7 +21,7 @@ module Admin
     end
     
   
-    end
+    
 
     # GET /users/new
     def new
