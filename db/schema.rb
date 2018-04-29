@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180428032754) do
+ActiveRecord::Schema.define(version: 20180429092451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20180428032754) do
     t.integer  "salePrice"
     t.integer  "profit"
     t.string   "status"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_companies_on_user_id", using: :btree
   end
 
   create_table "deals", force: :cascade do |t|
@@ -39,6 +41,8 @@ ActiveRecord::Schema.define(version: 20180428032754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "email"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_deals_on_user_id", using: :btree
   end
 
   create_table "expenses", force: :cascade do |t|
@@ -59,6 +63,8 @@ ActiveRecord::Schema.define(version: 20180428032754) do
     t.integer  "other_expenses"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_expenses_on_user_id", using: :btree
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -85,6 +91,8 @@ ActiveRecord::Schema.define(version: 20180428032754) do
     t.text     "description"
     t.integer  "paidAmount"
     t.string   "phone"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -132,6 +140,8 @@ ActiveRecord::Schema.define(version: 20180428032754) do
     t.integer  "adult"
     t.integer  "child"
     t.integer  "infant"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_visits_on_user_id", using: :btree
   end
 
 end

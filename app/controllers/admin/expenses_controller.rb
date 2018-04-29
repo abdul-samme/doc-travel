@@ -2,31 +2,29 @@
   module Admin
   class ExpensesController < Admin::ApplicationController
     respond_to :json, :html
-    before_action :set_expense, only: [:show, :edit, :update, :destroy, :print]
+    before_action :set_expense, only: [:show, :edit, :update, :destroy]
 
     # GET /expenses
     # GET /expenses.json
     def index
+      
+      if current_user.admin?
       @expenses = Expense.all
+    else
+      @expenses = current_user.expenses
     end
+  end
 
     # GET /expenses/1
     # GET /expenses/1.json
     def show
         respond_to do |format|
       format.html   
-      format.json
-      format.pdf { render template: 'admin/expenses/report', pdf: 'report', layout: 'layouts/pdf'}
-    end
-  
-    end
-      def print
-        respond_to do |format|
-        format.html {render template: 'admin/expenses/invoice' , layout: false}
       
-    end
+      end
   
     end
+      
 
     # GET /expenses/new
     def new
@@ -42,7 +40,7 @@
     # POST /expenses
     # POST /expenses.json
     def create
-      @expense = Expense.new(expense_params)
+      @expense = current_user.expenses.build(expense_params)
 
       if @expense.save
         flash[:notice] = t('admin.expenses.create.success')

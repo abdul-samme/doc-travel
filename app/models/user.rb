@@ -2,6 +2,12 @@ class User < ApplicationRecord
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
+  has_many :expenses
+  has_many :visits
+  has_many :tickets
+  has_many :companies
+  has_many :deals
+
   validates :name, presence: true
   validates :email, uniqueness: true, email: true
 

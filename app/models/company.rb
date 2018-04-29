@@ -9,6 +9,8 @@ class Company < ApplicationRecord
   before_update :set_client_status
   before_update :client_debit_payment, if: :creditAmount?
 
+  belongs_to :user
+
 
  def client_debit_payment
    if self.debitAmount.to_f > 0.0

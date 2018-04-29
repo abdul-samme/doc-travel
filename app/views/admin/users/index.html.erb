@@ -15,8 +15,10 @@
                 <table id="user_index" class="table table-bordered table-striped dataTables-example table-responsive" role="grid">
                   <thead>
                     <tr>
+                      <th> Id </th>
                       <th>Name</th>
                       <th>Email</th>
+                      <th>Role</th>
                       <th class="col-xs-2">Actions</th>
                     </tr>
                   </thead>
@@ -24,8 +26,10 @@
                   <tbody>
                     <% @users.each do |user| %>
                       <tr>
-                        <td> <%= user.name %> </td>
+                       <td> <%= user.id %> </td>
+                       <td> <%= user.name %> </td>
                         <td> <%= user.email %> </td>
+                        <td> <%= user.role %> </td>
                         <td>
                           <div class="btn-row">
                             <%= link_to raw('<i class="fa fa-eye"></i>'), admin_user_url(user), class: 'btn btn-sm btn-primary' %>

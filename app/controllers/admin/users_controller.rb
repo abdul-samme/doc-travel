@@ -1,11 +1,12 @@
 module Admin
   class UsersController < Admin::ApplicationController
     respond_to :json, :html
-    before_action :set_user, only: [:show, :edit, :update, :destroy, :print]
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     # GET /users
     # GET /users.json
     def index
+      
       @users = User.all
     end
 
@@ -14,16 +15,11 @@ module Admin
     def show
         respond_to do |format|
       format.html   
-      format.json
-      format.pdf { render template: 'admin/users/report', pdf: 'report', layout: 'layouts/pdf'}
+      
     end
   
     end
-      def print
-        respond_to do |format|
-        format.html {render template: 'admin/users/invoice' , layout: false}
-      
-    end
+    
   
     end
 
