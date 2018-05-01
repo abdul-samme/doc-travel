@@ -7,7 +7,11 @@
     # GET /deals
     # GET /deals.json
     def index
+      if current_user.admin?
       @deals = Deal.all
+      else
+        @deals = current_user.deals
+      end 
     end
 
     # GET /deals/1
@@ -32,7 +36,7 @@
     # POST /deals
     # POST /deals.json
     def create
-      @deal = Deal.new(deal_params)
+      @deal = current_user.deals.build(deal_params)
 
       if @deal.save
         flash[:notice] = t('admin.deals.create.success')
@@ -67,7 +71,22 @@
 
     # Use callbacks to share common setup or constraints between actions.
     private def set_deal
-      @deal = Deal.find(params[:id])
+      if current_user.admin?
+
+        if Deal.exists?(params[:id])
+        @deal = Deal.find(params[:id])
+        else
+        render :file => "#{Rails.root}/public/404",  layout: false, status: :not_found
+        end 
+
+      else
+        
+        if current_user.deals.exists?(params[:id])
+        @deal = current_user.deals.find(params[:id])
+        else
+        render :file => "#{Rails.root}/public/404",  layout: false, status: :not_found
+        end 
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

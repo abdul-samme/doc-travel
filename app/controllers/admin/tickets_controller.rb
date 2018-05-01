@@ -7,16 +7,24 @@ module Admin
     # GET /users
     # GET /users.json
     def index
-      @tickets = Ticket.all
+      if current_user.admin?
+        @tickets = Ticket.all
+      else
+        @tickets = current_user.tickets
+      end 
     end
+    
     def payment_edit
     end
 
 
      # Post
     def debit_payment
-
+      if current_user.admin?
       @ticket = Ticket.find(params[:ticket][:id])
+    else
+      @ticket = current_user.tickets.find(params[:ticket][:id])
+    end 
       if @ticket.update(ticket_params)
         flash[:notice] = t('admin.tickets.update.success')
         redirect_to admin_tickets_url 
@@ -30,7 +38,11 @@ module Admin
     # GET /users/1.json
     def debit
       @tickets =[]
-      tickets = Ticket.where(status: "Not Cleared").ids
+      if current_user.admin?
+        tickets = Ticket.where(status: "Not Cleared").ids
+      else
+      tickets = current_user.tickets.where(status: "Not Cleared").ids
+    end 
       tickets.each do | ticket|
         v = Ticket.find(ticket)
         @tickets << v
@@ -41,6 +53,8 @@ module Admin
     def show
         respond_to do |format|
       format.html   
+      format.json
+      format.pdf { render template: 'admin/tickets/report', pdf: 'report', layout: 'layouts/pdf'}
     end
     end
 
@@ -71,7 +85,7 @@ module Admin
     # POST /users
     # POST /users.json
     def create
-      @ticket = Ticket.new(ticket_params)
+      @ticket = current_user.tickets.build(ticket_params)
 
       if @ticket.save
         flash[:notice] = t('admin.tickets.create.success')
@@ -85,7 +99,7 @@ module Admin
     # PATCH/PUT /users/1
     # PATCH/PUT /users/1.json
     def update
-      if @ticket.update(visit_params)
+      if @ticket.update(ticket_params)
         flash[:notice] = t('admin.tickets.update.success')
         redirect_to admin_tickets_url 
       else
@@ -106,20 +120,28 @@ module Admin
 
     # Use callbacks to share common setup or constraints between actions.
     private def set_ticket
-      @ticket = Ticket.find(params[:id])
+      
+      
+      if current_user.admin?
+        if Ticket.exists?(params[:id])
+        @ticket = Ticket.find(params[:id])
+        else
+        render :file => "#{Rails.root}/public/404",  layout: false, status: :not_found
+        end 
+
+      else
+        
+        if current_user.tickets.exists?(params[:id])
+        @ticket = current_user.tickets.find(params[:id])
+        else
+        render :file => "#{Rails.root}/public/404",  layout: false, status: :not_found
+        end 
+      end 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     private def ticket_params
       params.require(:ticket).permit(Ticket.attribute_names.map(&:to_sym))
-    end
+  end
   end
 end
-
-
-
-
-
-
-
-

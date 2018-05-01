@@ -8,8 +8,12 @@
     # GET /companies
     # GET /companies.json
     def index
+     if  current_user.admin?
       @companies = Company.all
+     else
+      @companies = current_user.companies
     end
+  end 
     def payment_edit
 
     end
@@ -17,7 +21,11 @@
 
      # Post
     def debit_payment
+      if current_user.admin?
       @company = Company.find(params[:company][:id])
+    else
+      @company = current_user.companies.find(params[:company][:id])
+    end 
       if @company.update(company_params)
         flash[:notice] = t('admin.companies.update.success')
         redirect_to admin_companies_url 
@@ -31,7 +39,12 @@
     # GET /users/1.json
     def debit
       @companies =[]
+      if current_user.admin?
       companies = Company.where(status: "Not Cleared").ids
+      else
+       companies = current_user.companies.where(status: "Not Cleared").ids
+      end 
+
       companies.each do | company |
         c = Company.find(company)
         @companies << c
@@ -62,7 +75,7 @@
     # POST /companies
     # POST /companies.json
     def create
-      @company = Company.new(company_params)
+      @company = current_user.companies.build(company_params)
 
       if @company.save
         flash[:notice] = t('admin.companies.create.success')
@@ -97,7 +110,23 @@
 
     # Use callbacks to share common setup or constraints between actions.
     private def set_company
-      @company = Company.find(params[:id])
+
+      
+      if current_user.admin?
+        if Company.exists?(params[:id])
+        @company = Company.find(params[:id])
+        else
+        render :file => "#{Rails.root}/public/404",  layout: false, status: :not_found
+        end 
+
+      else
+        
+        if current_user.companies.exists?(params[:id])
+        @company = current_user.companies.find(params[:id])
+        else
+        render :file => "#{Rails.root}/public/404",  layout: false, status: :not_found
+        end 
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

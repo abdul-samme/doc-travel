@@ -75,7 +75,21 @@
 
     # Use callbacks to share common setup or constraints between actions.
     private def set_expense
-      @expense = Expense.find(params[:id])
+      if current_user.admin?
+        if Expense.exists?(params[:id])
+        @expense = Expense.find(params[:id])
+        else
+        render :file => "#{Rails.root}/public/404",  layout: false, status: :not_found
+        end 
+
+      else
+        
+        if current_user.expenses.exists?(params[:id])
+        @expense = current_user.expenses.find(params[:id])
+        else
+        render :file => "#{Rails.root}/public/404",  layout: false, status: :not_found
+        end 
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

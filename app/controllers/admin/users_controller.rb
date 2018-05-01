@@ -6,9 +6,13 @@ module Admin
     # GET /users
     # GET /users.json
     def index
-      
-      @users = User.all
-    end
+      if current_user.admin?
+       @users = User.all
+     else
+        
+      render :file => "#{Rails.root}/public/404",  layout: false, status: :not_found
+    end 
+   end
 
     # GET /users/1
     # GET /users/1.json
@@ -25,8 +29,12 @@ module Admin
 
     # GET /users/new
     def new
+      if current_user.admin?
       @user = User.new
       @url = admin_users_path
+    else
+      render :file => "#{Rails.root}/public/404",  layout: false, status: :not_found
+    end 
     end
 
     # GET /users/1/edit
@@ -72,8 +80,17 @@ module Admin
 
     # Use callbacks to share common setup or constraints between actions.
     private def set_user
-      @user = User.find(params[:id])
+    if current_user.admin?
+       if User.exists?(params[:id])
+       @user = User.find(params[:id])
+       else
+      render :file => "#{Rails.root}/public/404",  layout: false, status: :not_found
+       end 
+    else 
+      render :file => "#{Rails.root}/public/404",  layout: false, status: :not_found
+
     end
+  end 
 
     # Never trust parameters from the scary internet, only allow the white list through.
     private def user_params
